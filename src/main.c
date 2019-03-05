@@ -1,8 +1,13 @@
 #include <stdio.h>
 #include "bmp.h"
 
-void main(int argc, char **argv) 
+int main(int argc, char **argv) 
 {
     printf("BMP2C 0.0.1\n");
-    BMP_ReadBitmap(argv[1]);
+    COLORBUFFER *buf =  BMP_ReadBitmap(argv[1]);
+    
+    BUFFER_FlushBinary(buf, stdout);
+    
+    BUFFER_Deinit(buf);
+    return 0;
 }
