@@ -6,7 +6,7 @@
 #pragma pack(push, 1)
 typedef struct _COLORDATA
 {
-    uint8_t b, g, r;
+    uint8_t b, g, r, alpha;
 } COLORDATA;
 #pragma pack(pop)
 

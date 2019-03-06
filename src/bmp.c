@@ -1,5 +1,5 @@
 #include "bmp.h"
-
+#include <math.h>
 
 COLORBUFFER* BMP_ReadBitmap(const char *fname)
 {
@@ -17,10 +17,15 @@ COLORBUFFER* BMP_ReadBitmap(const char *fname)
         fclose(f);
         return NULL;
     }
-
-    uint32_t bitmapSize = (file->size - file->offset) / sizeof(COLORDATA);
+    int32_t width = 0, height = 0;
+    fseek(f, 0x12, SEEK_SET);
+    
+    fread(&width, sizeof(int32_t), 1, f);
+    fread(&height, sizeof(int32_t), 1, f);
+    
+    uint32_t bitmapSize = abs(width) * abs(height); //(file->size - file->offset) / sizeof(COLORDATA);
     COLORBUFFER *buffer = (COLORBUFFER*)malloc(sizeof(COLORBUFFER));
-    BUFFER_Init(buffer, bitmapSize);
+    BUFFER_Init(buffer, bitmapSize, abs(width), abs(height));
     fseek(f, file->offset, SEEK_SET);
     
     COLORDATA c; // 
