@@ -3,6 +3,7 @@
 #include "mono.h"
 #include "rle.h"
 #include "h_writer.h"
+#include "../argparse/argparse.h"
 
 int main(int argc, char **argv) 
 {
