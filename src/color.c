@@ -3,7 +3,7 @@
 void COLOR_ToGrayscale(COLORDATA *color)
 {
     // From: http://poynton.ca/notes/colour_and_gamma/ColorFAQ.html
-    uint8_t mono = (0.2125 * color->r) + (0.7154 * color->g) + (0.0721 * color->b);
+    uint8_t mono = (0.2125f * color->r) + (0.7154f * color->g) + (0.0721f * color->b);
     color->r = mono;
     color->g = mono;
     color->b = mono;
