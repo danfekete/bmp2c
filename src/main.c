@@ -2,6 +2,7 @@
 #include "bmp.h"
 #include "mono.h"
 #include "rle.h"
+#include "h_writer.h"
 
 int main(int argc, char **argv) 
 {
@@ -20,9 +21,13 @@ int main(int argc, char **argv)
     
     RLE_Init(rle);
     RLE_FromMono(rle, mono);
-    RLE_Write(rle, stdout);
+    RLE_Finish(rle);
+    //RLE_Write(rle, stdout);
     
     MONO_Deinit(mono); // Kill mono
+
+    HEADER_Writer(rle->buffer, rle->size, stdout);
+
     RLE_Deinit(rle); // Kill RLE
     return 0;
 }
