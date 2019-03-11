@@ -10,7 +10,7 @@
             "request": "launch",
             "preLaunchTask": "build project",
             "program": "${workspaceFolder}/bmp2c",
-            "args": ["bitmaps/da.bmp"],
+            "args": ["-fd0.5",  "bitmaps/da.bmp"],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],
